@@ -1,8 +1,13 @@
 const express = require("express");
 const https = require("https");
+const path = require('path')
 const bodyParser = require("body-parser");
 
 const app = express();
+// serving static files
+app.use('/', express.static(path.join(__dirname, 'public')))
+
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res) {
